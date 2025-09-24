@@ -2,7 +2,7 @@ class HealthRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_health_record, only: %i[show edit update destroy translate toggle_view]
 
-    helper_method :language_name  # NOTE: becareful with indentation
+    helper_method :language_name  # NOTE: Be careful with indentation
 
   def index
     @health_records = current_user.health_records.order(created_at: :desc)
@@ -14,7 +14,7 @@ class HealthRecordsController < ApplicationController
     @available_translations = @health_record.translations.pluck(:language)
   end
 
-def translate #NOTE: another indentation error (use a linter)
+def translate # NOTE: another indentation error (use a linter)
   target_locale = params[:target_locale] || current_user.preferred_language || 'en'
   
   if @health_record.has_translation?(target_locale)
@@ -83,7 +83,8 @@ end
     params.require(:health_record).permit(:record_type, :language, :document)
   end
 
-  def language_name(code) #nice cool implementation of transaltions
+  def language_name(code) 
+    # NOTE: nice cool implementation of translations
     HealthRecord::SUPPORTED_LANGUAGES.find { |_, c| c == code }&.first || code
   end
 end

@@ -17,8 +17,7 @@
 
   <body class="gradient-bg app-wrapper">
     <%= render "shared/navbar" %>
-    <% #Remember DRY PRINCIPLE, USE FLASH PARTIAL %>
-    <% # NOTE: I am unsure of line 22 %>
+    <% # NOTE: Remember DRY PRINCIPLE, USE FLASH PARTIAL %>
     <%# Flash messages (skip "Signed in successfully" unless on dashboard) %>
       <% if flash.any? %>
         <div class="<%= current_page?(root_path) ? '' : 'container mt-3' %>">

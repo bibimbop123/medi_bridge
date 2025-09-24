@@ -1,8 +1,9 @@
 class TranslationJob < ApplicationJob
   queue_as :default
   # NOTE: great way to look up the health record 
-  #and make a new translation using the translation service 
-  #and logging the translation so that it can be referenced
+  # and make a new translation using the translation service 
+  # and logging the translation so that it can be referenced
+  
   def perform(health_record_id, target_locale, user_id = nil)
     health_record = HealthRecord.find(health_record_id)
     
@@ -18,4 +19,4 @@ class TranslationJob < ApplicationJob
       Rails.logger.error "Translation failed for HealthRecord #{health_record_id}: #{result.error}"
     end
   end
-end
+end # NOTE: Must have extra line at the end of each file for formatting in github.
